@@ -10,12 +10,12 @@ describe Sequence do
 
     it "should match AAT" do
       subject.match("AAT", "<", ">")
-      subject.with_delimiters.should == "<AAT>AACG"
+      subject.with_signals_marked.should == "<AAT>AACG"
     end
 
     it "should match multiple occurences" do
       subject.match("AA", "<", ">")
-      subject.with_delimiters.should == "<AA>T<AA>CG"
+      subject.with_signals_marked.should == "<AA>T<AA>CG"
     end
   end
 
@@ -24,7 +24,7 @@ describe Sequence do
 
     it "should match multiple occurences" do
       subject.match("AATA", "<", ">")
-      subject.with_delimiters.should == "<AAT<A>ATA>CG"
+      subject.with_signals_marked.should == "<AAT<A>ATA>CG"
     end
   end
 
@@ -33,13 +33,13 @@ describe Sequence do
     it "should match two different signals" do
       subject.match("AAT", "<", ">")
       subject.match("CCG", "{", "}")
-      subject.with_delimiters.should == "<AAT>{CCG}"
+      subject.with_signals_marked.should == "<AAT>{CCG}"
     end
 
     it "should match two different signals with crossover" do
       subject.match("AAT", "<", ">")
       subject.match("TCC", "{", "}")
-      subject.with_delimiters.should == "<AA{T>CC}G"
+      subject.with_signals_marked.should == "<AA{T>CC}G"
     end
   end
 end

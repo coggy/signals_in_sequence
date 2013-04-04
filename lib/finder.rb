@@ -13,7 +13,7 @@ class Finder
           sequence.match(signal, "<", ">")  
         end
         File.open(filename.gsub("data", "out"), "w") do |out|
-          out.write sequence.with_delimiters
+          out.write sequence.with_signals_marked
         end
       end
     end
